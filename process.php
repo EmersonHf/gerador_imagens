@@ -35,7 +35,7 @@ function addLogo($selectedImage, $logoImagePath, $outputImagePath)
         $logo->scaleImage($logoWidth, $logoHeight, true);
 
 
-      // Calculate the position to place the logo at the bottom right corner
+      // Calculate the position to place the logo in the bottom right corner
       $positionX = 170; // Left margin
       $positionY = $anuncioHeight - $logoHeight - 11; // Bottom margin
       
