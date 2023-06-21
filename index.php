@@ -68,25 +68,25 @@
 <div class="image-item">
     <input type="radio" name="selectedImage" value="storyanuncio01.jpg" id="storyanuncio01">
     <label for="storyanuncio01">
-        <img src="/images/storyImages/storyanuncio01.jpg" alt="storyanuncio01" width="200" height="200">
+        <img src="/images/storyImages/storyanuncio01.jpg" alt="storyanuncio01" width="150" height="220">
     </label>
 </div>
 <div class="image-item">
     <input type="radio" name="selectedImage" value="storyanuncio02.jpg" id="storyanuncio02">
     <label for="storyanuncio02">
-        <img src="/images/storyImages/storyanuncio02.jpg" alt="storyanuncio02" width="200" height="200">
+        <img src="/images/storyImages/storyanuncio02.jpg" alt="storyanuncio02" width="150" height="220">
     </label>
 </div>
 <div class="image-item">
     <input type="radio" name="selectedImage" value="storyanuncio03.jpg" id="storyanuncio03">
     <label for="storyanuncio03">
-        <img src="/images/storyImages/storyanuncio03.jpg" alt="storyanuncio03" width="200" height="200">
+        <img src="/images/storyImages/storyanuncio03.jpg" alt="storyanuncio03" width="150" height="220">
     </label>
 </div>
 <div class="image-item">
     <input type="radio" name="selectedImage" value="storyanuncio04.jpg" id="storyanuncio04">
     <label for="storyanuncio04">
-        <img src="/images/storyImages/storyanuncio04.jpg" alt="storyanuncio04" width="200" height="200">
+        <img src="/images/storyImages/storyanuncio04.jpg" alt="storyanuncio04" width="150" height="220">
     </label>
 </div>
 
