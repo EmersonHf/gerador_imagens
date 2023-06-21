@@ -9,9 +9,12 @@
             justify-content: center;
            
         }
+        img{
+            border-radius: 20px;
+        }
         .image-item {
             margin: 10px; 
-            border-radius: 80px;
+           
            
         }
     </style>
@@ -21,15 +24,15 @@
     <form action="process.php" method="POST" enctype="multipart/form-data">
         <div class="image-container">
             <div class="image-item">
-                <input type="radio" name="selectedImage" value="image1.jpg" id="image1" checked>
-                <label for="image1">
+                <input type="radio" name="selectedImage" value="anuncio04.png" id="anuncio04" checked>
+                <label for="anuncio04">
                     <img src="/images/anuncio04.png" alt="Image 1" width="200" height="200">
                 </label>
             </div>
             <div class="image-item">
-                <input type="radio" name="selectedImage" value="image2.jpg" id="image2">
-                <label for="image2">
-                    <img src="images/anuncio05.jpg" alt="Image 2" width="200" height="200">
+                <input type="radio" name="selectedImage" value="anuncio04.jpg" id="anuncio05">
+                <label for="anuncio05">
+                    <img src="/images/anuncio05.jpg" alt="Image 2" width="200" height="200">
                 </label>
             </div>
             <!-- Add more image items as needed -->

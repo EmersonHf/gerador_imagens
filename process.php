@@ -8,27 +8,39 @@ function addLogo($selectedImage, $logoImagePath, $outputImagePath)
             throw new ImagickException('Diretório da logo não foi configurado.');
         }
         
+       
         // Create new Imagick objects for source image and logo
-    
-            $selectedImage = $_POST['selectedImage'];
             $anuncio = new Imagick();
-            $anuncio->readImage($selectedImage);
-            $anuncioWidth = $anuncio->getImageWidth();
-            $anuncioHeight = $anuncio->getImageHeight();
+            $selectedImage =  __DIR__.'/images/'.$_POST['selectedImage'];
+          
+            if (file_exists($selectedImage)) {
 
+                $anuncio->readImage($selectedImage);
+                $anuncioWidth = $anuncio->getImageWidth();
+                $anuncioHeight = $anuncio->getImageHeight();
+
+            } else {
+                throw new ImagickException('Imagem selecionada não existe.');
+            }
 
         $logo = new Imagick($logoImagePath);
 
-        $logoWidth = $logo->getImageWidth();
-        $logoHeight = $logo->getImageHeight();
+        // $logoWidth = $logo->getImageWidth();
+        // $logoHeight = $logo->getImageHeight();
+    
+        $logoWidth = 200;
+        $logoHeight = 200;
+        
+        // Resize the logo image
+        $logo->scaleImage($logoWidth, $logoHeight, true);
+
 
       // Calculate the position to place the logo at the bottom right corner
-      $positionX = $anuncioWidth - $logoWidth - 10;
-      $positionY = $anuncioHeight - $logoHeight - 10;
+      $positionX = 170; // Left margin
+      $positionY = $anuncioHeight - $logoHeight - 11; // Bottom margin
       
-      
-        // Add watermark/logo to the source image
-        // Modify the code below according to your desired watermarking logic
+       
+ 
         $anuncio->compositeImage($logo, Imagick::COMPOSITE_OVER, $positionX, $positionY);
   
   
@@ -54,14 +66,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if a file was uploaded
     if (isset($_FILES['logo']) && $_FILES['logo']['error'] === UPLOAD_ERR_OK) {
         
-        $selectedImage = $_POST['selectedImage'];
+        $selectedImage = __DIR__.'/images/'.$_POST['selectedImage'];
         $logoTmpPath = $_FILES['logo']['tmp_name']; // caminho temporario
         $logoFileName = $_FILES['logo']['name']; // nome do arquivo original
         $logoImagePath = __DIR__.'/images/uploads/logos/' . $logoFileName; 
 
-        $outputImagePath = __DIR__.'/imagensGeradas/result_image.png'; 
+        $outputImagePath = __DIR__.'/images/imagensGeradas/result_image.png'; 
       
-        // echo $selectedImage;
+    //     echo $selectedImage;
        
     //     echo "imagem selecionada:", $selectedImage;
     //    echo "<br><br>";
@@ -82,18 +94,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
       
         header('Content-disposition: inline');
-        readfile($outputImagePath);
-        
+       
         
         // Display the result and provide a download link
         
         echo '<h1>Resultado :</h1>';
         echo '<img src="data:image/png;base64,' . base64_encode(file_get_contents($outputImagePath)) . '" alt="Result Image" width="400" height="400"><br><br>';
 
-        echo '<a href="' . $outputImagePath . '" download>Download Result Image</a>';
+        echo '<a href="' . $outputImagePath . '" download>Download</a>';
     } else {
-        echo 'Error: Please select a logo image.';
+        echo 'Error: Por favor, selecione uma imagem para logo.';
     }
 } else {
-    echo 'Error: Invalid request.';
+    echo 'Error: Requisição inválida.';
 }
